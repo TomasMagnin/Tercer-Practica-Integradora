@@ -1,7 +1,7 @@
-import { CodesModel } from ('../DAO/mongo/models/codes.model');
-import { UserModel } from ('../DAO/mongo/models/users.model.js');
-import { uuidv4 } from ('uuid');
-import { transport } from ("../utils/mailer.js");
+import { CodesModel } from "../DAO/mongo/models/codes.model.js";
+import { UserModel } from "../DAO/mongo/models/users.model.js";
+import {v4 as uuidv4 } from 'uuid';
+import { transport } from "../utils/mailer.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -31,7 +31,7 @@ export class CodeService {
         };
     };
 
-    async updateUser(password) {
+    async updateUser(password, email) {
         const updateUser = await UserModel.updateOne({email}, {password});
     }
 };

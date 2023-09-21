@@ -1,9 +1,8 @@
-import { ProductModel  } from "../DAO/models/products.model.js";
+import { ProductModel  } from "../DAO/mongo/models/products.model.js";
 import { ProductMongo  } from "../DAO/mongo/products.mongo.js";
 import { ProductDTO  } from "../DAO/DTO/products.dto.js";
 import { CustomError } from "../services/errors/custom-error.js";
 import EErros from "../services/errors/enums.js";
-
 export class ProductService  {
     constructor(dao) {
         this.dao = dao;

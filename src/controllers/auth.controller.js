@@ -3,7 +3,7 @@ import { CustomError } from "../services/errors/custom-error.js";
 import passport  from "passport";
 import EErros from "../services/errors/enums.js";
 import logger from "../utils/logger.js";
-import CodeService from ("../services/code.service.js");
+import { CodeService } from "../services/code.service.js";
 const codeService = new CodeService();
 
 export class AuthController {

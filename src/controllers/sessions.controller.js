@@ -1,4 +1,4 @@
-import { UserDTO } from "../DAO/DTO/user.dto";
+import { UserDTO } from "../DAO/DTO/user.dto.js";
 
 export  class  SessionsController {
 

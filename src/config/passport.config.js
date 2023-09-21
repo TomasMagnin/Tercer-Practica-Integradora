@@ -5,7 +5,7 @@ import { createHash, isValidPassword } from '../utils/utils.js';
 import { UserModel } from '../DAO/mongo/models/users.model.js'
 import {CartService} from '../services/carts.service.js';
 import dotenv from "dotenv";
-import logger from "./utils/logger.js";
+import logger from "../utils/logger.js";
 
 dotenv.config();
 const clientID = process.env.CLIENT_ID

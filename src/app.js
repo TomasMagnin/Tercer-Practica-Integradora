@@ -2,7 +2,8 @@ import express from "express";                                    // Importamos 
 import { Server } from 'socket.io';
 import session from "express-session";
 import handlebars from "express-handlebars";
-import { __dirname, __filename, connectMongo, connectSocket} from "./utils/utils.js";                           // Importamos la variable __dirname, de la configuracion de MULTER para poder subir archivos, LA variable dirname, es una variable de Node con un path aboluto a la carpeta que le indicamos.
+import { connectMongo, connectSocket } from "./utils/utils.js";    // Importamos la variable __dirname, de la configuracion de MULTER para poder subir archivos, LA variable dirname, es una variable de Node con un path aboluto a la carpeta que le indicamos.
+import { __dirname, __filename } from "./dirname.js";
 import path from "path";
 import { productsRouter } from "./routes/products.router.js";     // Importamos los endpoint Productos.
 import { cartsRouter } from "./routes/carts.router.js";           //    Importamos los endpoint Carts.
@@ -13,8 +14,9 @@ import { sessionsRouter } from "./routes/sessions.router.js";
 import MongoStore from "connect-mongo";
 import http from "http";
 import passport  from "passport";
-import iniPassport from "./config/passport.config.js";
-import { compression  } from "express-compression";
+import { iniPassport } from "./config/passport.config.js";
+import pkg from 'express-compression';
+const compression   = pkg;
 import { errorHandler } from "./middlewares/error.js";
 import logger from "./utils/logger.js";
 import dotenv from "dotenv";
@@ -31,6 +33,7 @@ const socketServer = new Server(httpServer);                        // Guardamos
 
 
 // Middleware 
+app.use(errorHandler);
 app.use(express.json());                                        // Declaramos que el servidor utiliza formato JSON por defecto.
 app.use(express.urlencoded({extended: true}));                  // Declaramos que extendemos lo que recive por URL, para recivir datos complejos y porder mapearlos desde la URL.
 app.use(express.static("./public"));                              // Usamos una carpeta public, para guardar archivos estaticos, donde puede acceder el usuario. El nombre del directorio no forma parte de la URL.
@@ -42,8 +45,7 @@ app.use(compression({
 
 const mongodbUrl = process.env.MONGODB_URL;
 app.use(session({
-    store: MongoStore.create({
-    mongoUrl: mongodbUrl, ttl: 3600}),
+    store: MongoStore.create({mongoUrl:mongodbUrl, ttl: 3600}),
     secret: 'secret',
     resave: true,
     saveUninitialized: true,
@@ -70,7 +72,7 @@ app.use("/", viewsRouter);
 app.use("/chat", chatsRouter);
 app.use("/auth", authRouter);
 app.use("api/sessions", sessionsRouter);
-app.use(errorHandler);
+
 
 
 app.listen(port, ()=> {

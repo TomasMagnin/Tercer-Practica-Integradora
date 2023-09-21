@@ -1,4 +1,4 @@
-import { ProductMongo } from '../DAO/mongo/products.mongo';
+import { ProductMongo } from '../DAO/mongo/products.mongo.js';
 import { ProductService } from '../services/products.service.js';
 import { CartService } from '../services/carts.service.js';
 import { CustomError } from "../services/errors/custom-error.js";

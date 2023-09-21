@@ -1,6 +1,6 @@
 /* ----------------- DIRNAME ------------ */
 
-
+/* 
 import multer from "multer";
 
 const storage = multer.diskStorage({
@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 });
 
 export const ulploader = multer({ storage });
-
+ */
 
 /* ----------------- DIRNAME ------------ */
 
@@ -104,7 +104,7 @@ import { faker } from '@faker-js/faker';
 
 faker.constructor = "es";
 
-exports.generateProduct = () => {
+export const generateProduct = () => {
     return {
       title: faker.commerce.productName(),
       description: faker.commerce.productDescription(),

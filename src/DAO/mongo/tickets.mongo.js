@@ -1,4 +1,4 @@
-import { TicketMongo } from "./models/tickets.model.js";
+import { TicketModel } from "./models/tickets.model.js";
 
 export class TicketMongo {
     async createTicket(){

@@ -5,7 +5,7 @@ const ticketService = new TicketService();
 import { CustomError } from "../services/errors/custom-error.js";
 import EErros from "../services/errors/enums.js";
 
-const { v4: uuidv4 } = require('uuid');
+import {v4 as uuidv4 } from 'uuid';
 function generateUniqueTicketCode() {
     return uuidv4();
 }
